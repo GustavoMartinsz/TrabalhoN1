@@ -12,28 +12,38 @@ int func_val(int x, int b) {
     double result = x / (double)b;
     return round(result);
 }
-
-// imprime os limites dos tipos de variáveis
+//  tabela com os limites das variaveis
 void print_limits() {
-    printf("| Tipo                   | Minimo                    Maximo                   \n");
-    printf("|------------------------|----------------------------------------------------\n");
-    printf("| char                   | %d                       %d                        \n", CHAR_MIN, CHAR_MAX);
-    printf("| int                    | %d                       %d                        \n", INT_MIN, INT_MAX);
-    printf("| short int              | %d                        %d                        \n", SHRT_MIN, SHRT_MAX);
-    printf("| unsigned int           | 0                         %u                        \n", UINT_MAX);
-    printf("| long int               | %ld                       %ld                       \n", LONG_MIN, LONG_MAX);
-    printf("| unsigned long int      | 0                         %lu                       \n", ULONG_MAX);
-    printf("| long long int          | %lld                      %lld                      \n", LLONG_MIN, LLONG_MAX);
-    printf("| unsigned long long int | 0                          %llu                      \n", ULLONG_MAX);
-}
+	
+    printf("-------------------------------------------------------------------------\n");
+    printf("| Tipo                    | Minimo               | Maximo               |\n");
+    printf("-------------------------------------------------------------------------\n");
 
-// Função principal para problema de overflow
+    printf("| char                    | %20d | %20d |\n", CHAR_MIN, CHAR_MAX);
+    
+    printf("| int                     | %20d | %20d |\n", INT_MIN, INT_MAX);
+    
+    printf("| short int               | %20d | %20d |\n", SHRT_MIN, SHRT_MAX);
+
+    printf("| unsigned int            | %20u | %20u |\n", 0, UINT_MAX);
+
+    printf("| long int                | %20ld | %20ld |\n", LONG_MIN, LONG_MAX);
+  
+    printf("| unsigned long int       | %20lu | %20lu |\n", 0UL, ULONG_MAX);
+    
+    printf("| long long int           | %20lld | %20lld |\n", LLONG_MIN, LLONG_MAX);
+
+    printf("| unsigned long long int  | %20llu | %20llu |\n", 0ULL, ULLONG_MAX);
+    
+    printf("-------------------------------------------------------------------------\n");
+
+}
+// Função de overflow
 void demonstrate_overflow() {
     unsigned char a = 255; 
     a += 1; 
     printf("Valor de 'a' apos exceder o limite: %u (overflow ocorreu)\n", a);
 }
-
 //  decifrar a mensagem hexadecimal
 void decrypt_message(int b, char *ciphered) {
     int len = strlen(ciphered);
@@ -59,10 +69,10 @@ void decrypt_message(int b, char *ciphered) {
 int main() {
     //  Limites das variáveis
     print_limits();
-
+    
     // Exemplo de overflow
     demonstrate_overflow();
-
+    
     // Decifrar a mensagem
     int test_cases;
     printf("Digite o numero de casos de teste: ");
@@ -80,6 +90,5 @@ int main() {
 
         decrypt_message(b, ciphered);
     }
-
     return 0;
 }
